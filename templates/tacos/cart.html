@@ -1,0 +1,37 @@
+{% extends 'base.html' %} {% block title %}
+<title>Carrito de compras</title>
+{% endblock title %} {% block content %} {% include '_navbar.html' %}
+
+<section class="container my-5 text-center">
+  <h1 class=" taco-title mt-5">Carrito de compras</h1>
+
+  <ul class="list-group">
+    {% for order in orders %}
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-2">
+          <img src="{{ order.taco.image }}" alt="{{ order.taco.name }}" height="100"/>
+        </div>
+        <div class="col">
+          <h3 class="text-right">{{ order.taco.name }}</h3>
+          <small class="text-muted text-right">
+            <p class="my-0">Cantidad: {{ order.quantity }}</p>
+            <p class="my-0">Precio: {{ order.taco.price }}</p class="my-0">
+            <p class="my-0">Subtotal: {{ order.subtotal }}</p class="my-0">
+          </small>
+        </div>
+      </div>
+    </li>
+    {% empty %}
+    <h3 class="text-center">El carrito está vacío :(</h3>
+    {% endfor %}
+  </ul>
+  
+  {% if request.user.cart.total %}
+  <h3 class="text-right">
+    Total: ${{request.user.cart.total}}
+  </h3>
+  {% endif %}
+    
+</section>
+{% endblock content %}

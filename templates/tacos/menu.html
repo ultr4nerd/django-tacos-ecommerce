@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% block title %}
+<title>Menú</title>
+{% endblock title %} {% block content %} {% include '_navbar.html' %}
+
+{% for message in messages %}
+<div class="alert alert-success  alert-dismissible fade show" role="alert">
+  {{ message }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endfor %}
+
+<section class="container my-5">
+  <h1 class="text-center taco-title my-5">Menú</h1>
+  <div class="row">
+    {% for taco in taco_list %}
+    <div class="col">
+      <div
+        class="card"
+        style="width: 18rem; height:23rem; margin-bottom: 15px;"
+      >
+        <img src="{{ taco.image }}" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title text-bold">{{ taco.name }}</h5>
+          <p>
+            {{ taco.get_tortilla_display }} <br />
+            <small>${{ taco.price }}</small>
+          </p>
+
+          <a href="{% url 'tacos:order' taco.pk %}" class="btn btn-primary"
+            >¡Comprar!</a
+          >
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock content %}

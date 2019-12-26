@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% load static %} {% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/tacos.css' %}" />
+{% endblock extrahead %} {% block title %}
+<title>Tacos</title>
+{% endblock title %} {% block content %} {% include '_navbar.html' %}
+<section class="container mt-5">
+  <h1 class="display-3 taco-title text-center">¡Tacos, tacos, taaaacos!</h1>
+  <div class="row">
+    <figure class="col">
+      <img
+        src="https://cdn.dribbble.com/users/199077/screenshots/6086563/chest_fallout_tacos_800.gif"
+        alt="Hero"
+        class="skull-hero"
+      />
+    </figure>
+    <div
+      class="col d-flex justify-content-center align-items-center flex-column"
+    >
+      <p>No puedes evitar estos increíbles tacos</p>
+      <p>
+        <a class="btn btn-danger btn-lg" href="{% url 'tacos:list' %}" role="button">Ordenar</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer class="container text-center mt-5">
+  <p>&copy; Tacos Bedu 2019-2020</p>
+</footer>
+{% endblock content %}

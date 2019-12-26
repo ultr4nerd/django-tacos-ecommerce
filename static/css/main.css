@@ -1,0 +1,13 @@
+html,
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
+.taco-title {
+  font-family: 'Lakki Reddy', cursive;
+}
+
+
+.quantity-input {
+  max-width: 500px;
+}
